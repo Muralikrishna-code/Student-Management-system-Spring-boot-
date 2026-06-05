@@ -27,26 +27,26 @@ public class Studentcontroller {
 {
     this.service=service;
 }
-@GetMapping("/students")
+@GetMapping({"/user/students","/admin/students"})
 public ResponseEntity<Page<StudentResponseDTO>> getallstudents(@RequestParam(required=false,defaultValue="0") int page,@RequestParam(required=false,defaultValue="2") int size,@RequestParam(required=false,defaultValue = "stdid") String sortby,@RequestParam(required=false,defaultValue = "asc") String order)
 {    return new ResponseEntity<>(service.getallstudents(page,size,sortby,order),HttpStatus.OK);
 }   
-@GetMapping("/students/{id}")
+@GetMapping({"/user/students/{id}","/admin/students/{id}"})
 public ResponseEntity<StudentResponseDTO> getbyId(@PathVariable Long id)
 {
     return new ResponseEntity<>(service.getbyId(id),HttpStatus.OK);
 }
-@PostMapping("/students")
+@PostMapping("/admin/students")
 public ResponseEntity<StudentResponseDTO> createstudent(@Valid @RequestBody StudentRequestDTO st)
 {   
      return new ResponseEntity<>(service.createstudent(st),HttpStatus.CREATED);
 }
-@PutMapping("/students/{id}")
+@PutMapping("/admin/students/{id}")
 public ResponseEntity<StudentResponseDTO> updatest(@PathVariable Long id, @Valid @RequestBody StudentRequestDTO st)
 {
     return new ResponseEntity<>(service.updateStudent(id,st),HttpStatus.OK);
 }
-@DeleteMapping("/students/{id}")
+@DeleteMapping("/admin/students/{id}")
 public ResponseEntity<String> delete(@PathVariable Long id)
 {   service.delete(id);
       return new ResponseEntity<>("Deleted successfully",HttpStatus.OK);

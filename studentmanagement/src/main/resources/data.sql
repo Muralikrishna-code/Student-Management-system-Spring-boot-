@@ -17,3 +17,15 @@ INSERT INTO Student (name, course, phone, email,dept_Id)
 VALUES ('Kiran Kumar', 'aws', '9001122334', 'kiran@example.com',1);
 -- USERS TABLE DATA
 -- USERS TABLE
+INSERT INTO Appuser (username, password, Role)
+VALUES (
+  'admin',
+  '$2a$12$6mZJEsvJGctR2qDv437CY.1Mtbnq.qCv9YM/O7TtYL1XEWZefovnm',
+  'ROLE_ADMIN'
+);
+INSERT INTO Appuser (username, password, Role)
+VALUES (
+  'user',
+  '$2a$12$pK6Nnm12JB8lYD6b/Rk6CO3qX2IocuTN.1y2ekIHcwqzeQ3xE4YkG',
+  'ROLE_USER'
+);

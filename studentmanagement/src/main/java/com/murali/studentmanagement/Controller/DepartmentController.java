@@ -21,28 +21,25 @@ public class DepartmentController {
     @Autowired
     private  DepartmentService departmentService;
 
-    @GetMapping("/departments")
+    @GetMapping({"/user/departments","/admin/departments"})
     public List<DepartmentResponsDTO> getAllDepartments() {
         return departmentService.getAllDepartments();
     }
-        @PostMapping("/departments")
+        @PostMapping("/admin/departments")
     public DepartmentResponsDTO saveDepartment(
            @Valid @RequestBody DepartmentRequestDTO department) {
 
         return departmentService.saveDepartment(department);
     }
-    @DeleteMapping("/departments/{id}")
+    @DeleteMapping("/admin/departments/{id}")
     public ResponseEntity<String> deleterecord(@PathVariable Long id)
     {               departmentService.deleterecord(id);
         return new ResponseEntity<>("Deleted successfully",HttpStatus.OK);
     }
-    @PutMapping("/departments/{id}")
+    @PutMapping("/admin/departments/{id}")
     public ResponseEntity<DepartmentResponsDTO>updaterecord(@PathVariable Long id, @Valid @RequestBody DepartmentRequestDTO dept) {
 
 return new ResponseEntity<>(departmentService.updaterecord(id,dept),HttpStatus.OK);
-
-
-
     }
     
 
