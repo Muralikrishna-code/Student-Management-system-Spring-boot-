@@ -24,6 +24,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityfliterchain(HttpSecurity http) throws Exception 
     {
         http.csrf(csrf->csrf.disable());
+        http.headers(headers -> headers.frameOptions(frame -> frame.disable()));
           http.authorizeHttpRequests(auth->auth
                 .requestMatchers("/murali/admin/**").hasRole("ADMIN")
                 .requestMatchers("/murali/user/**").hasAnyRole("USER","ADMIN")
